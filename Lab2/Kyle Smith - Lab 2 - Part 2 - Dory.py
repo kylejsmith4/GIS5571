@@ -7,7 +7,7 @@ import glob
 
 arcpy.CheckOutExtension("Spatial")
 aprx = arcpy.mp.ArcGISProject("CURRENT")
-Dory_folder = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory"
+Dory_folder = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory"
 os.makedirs(Dory_folder, exist_ok=True)
 arcpy.env.workspace = Dory_folder
 
@@ -140,7 +140,7 @@ import arcpy
 from arcpy.sa import Reclassify, Con, RemapValue, Raster
 
 # Define directories and paths
-Dory_folder = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory"
+Dory_folder = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory"
 os.makedirs(Dory_folder, exist_ok=True)
 
 # URLs for external data sources
@@ -319,12 +319,12 @@ dory_map.addDataFromPath(slope_reclass_path)
 from arcpy.sa import *
 
 # Raster objects
-slope_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Slope_Reclassified.tif")
-farm_fields_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Farm_Reclassified.tif")
-adjusted_water_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Adjusted_Water_Reclassified.tif")
+slope_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Slope_Reclassified.tif")
+farm_fields_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Farm_Reclassified.tif")
+adjusted_water_reclass_raster = Raster(r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Adjusted_Water_Reclassified.tif")
 
 
-cost_surface_weighted_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Dory_Cost_Surface_Weighted.tif"
+cost_surface_weighted_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Dory_Cost_Surface_Weighted.tif"
 
 # Apply weights and save
 if not arcpy.Exists(cost_surface_weighted_path):
@@ -373,7 +373,7 @@ else:
     print("Dory Farm projection path confirmed.")
     
     
-Dory_Farm_start_Projected = "C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Dory_Farm_start_Projected.shp"
+Dory_Farm_start_Projected = "C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Dory_Farm_start_Projected.shp"
 
 # Project North Picnic 
 north_picnic_end_projected = os.path.join(Dory_folder, "north_picnic_end_Projected.shp")
@@ -391,7 +391,7 @@ if north_picnic_end_projected == os.path.join(Dory_folder, "north_picnic_end_Pro
 else:
     print("north_picnic projection path confirmed.")
     
-north_picnic_end_projected  = "C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\north_picnic_end_Projected.shp"
+north_picnic_end_projected  = "C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\north_picnic_end_Projected.shp"
 
 # Verify spatial references
 print("Cost Surface:", cost_surface_sr.name)
@@ -417,8 +417,8 @@ else:
     print("already exists.")
     
 
-cost_distance_raster_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Cost_Distance.tif"
-backlink_raster_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\Backlink.tif"
+cost_distance_raster_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Cost_Distance.tif"
+backlink_raster_path = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\Backlink.tif"
 least_cost_path_raster_path = os.path.join(Dory_folder, "Least_Cost_Path.tif")
 
 # Check and calculate statistics for each raster
@@ -460,7 +460,7 @@ import glob
 import arcpy
 from arcpy.sa import CostDistance, CostPath
 
-north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\north_picnic_end_Projected.shp"
+north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\north_picnic_end_Projected.shp"
 cost_surface_files = glob.glob(os.path.join(Dory_folder, "Cost_Surface_slope_*.tif")) #6 rasters from above
 
 for cost_surface_path in cost_surface_files:
@@ -506,11 +506,11 @@ for cost_surface_path in cost_surface_files:
         except arcpy.ExecuteError as e:
             print(f"Error executing CostPath for {least_cost_path_raster_path}: {e}")
 
-north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\north_picnic_end_Projected.shp"
+north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\north_picnic_end_Projected.shp"
 
 import time
 
-north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab_2\Dory\north_picnic_end_Projected.shp"
+north_picnic_end_projected = r"C:\Mac\Home\Documents\ArcGIS\Projects\Lab3\Dory\north_picnic_end_Projected.shp"
 cost_surface_files = glob.glob(os.path.join(Dory_folder, "Cost_Surface_slope_*.tif"))
 
 for cost_surface_path in cost_surface_files:
